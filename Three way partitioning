@@ -1,0 +1,44 @@
+class Solution{   
+public:
+   
+    void threeWayPartition(vector<int>& array,int a, int b)
+    {
+        // code here 
+        int smallCount,rangeCount,greaterCount;
+        smallCount=rangeCount=greaterCount=0;
+        for(int i=0;i<array.size();i++){
+            if(array[i]<a){
+                smallCount++;
+            }
+            else if(array[i]>b){
+                greaterCount++;
+            }
+            else{
+                rangeCount++;
+            }
+        }
+        int i,j,k;
+        i=0;;
+        j=smallCount;
+        k=smallCount+rangeCount;
+        vector<int> ans(array.size());
+        for(int l=0;l<array.size();l++){
+            if(array[l]<a){
+                ans[i]=array[l];
+                i++;
+            }
+            else if(array[l]>b){
+                ans[k]=array[l];
+                k++;
+            }
+            else{
+                ans[j]=array[l];
+                j++;
+            }
+        }
+        for(i=0;i<ans.size();i++){
+            array[i]=ans[i];
+        }
+        
+    }
+};
