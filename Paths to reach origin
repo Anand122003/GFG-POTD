@@ -1,0 +1,29 @@
+class Solution
+{
+public:
+    int countWays(int x,int y){
+        int i,j;
+        vector<vector<int>> ans(x+1,vector<int>(y+1));
+        
+        for(i=0;i<=x;i++){
+            for(j=0;j<=y;j++){
+                if(i==0 || j==0){
+                    ans[i][j]=1;
+                }
+                else{
+                     ans[i][j]=(ans[i][j-1]+ans[i-1][j])%1000000007;
+                }
+               
+            }
+        }
+        return ans[x][y]%1000000007;
+        
+        
+        
+    }
+    int ways(int x, int y)
+    {
+        //code here.
+        return countWays(x,y);
+    }
+};
