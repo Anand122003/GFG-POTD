@@ -1,0 +1,28 @@
+class Solution{
+    public:
+    Node* deleteMid(Node* head)
+    {
+        Node* temp=head;
+        Node* slow=temp;
+        Node* fast=temp;
+        Node* preSlow=NULL;
+        if(temp==NULL || temp->next==NULL){
+            return NULL;
+        }
+        while(fast->next!=NULL && fast->next->next!=NULL){
+            preSlow=slow;
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        
+        if(fast->next==NULL){           // odd no of node
+            preSlow->next=slow->next;
+        }
+        else if(fast->next->next==NULL){  // even no of node
+            slow->next=slow->next->next;
+        }
+        
+        return head;
+        
+    }
+};
