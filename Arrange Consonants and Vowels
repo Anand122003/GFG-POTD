@@ -1,0 +1,69 @@
+/*
+Structure of the node of the linked list is as
+struct Node
+{
+    char data;
+    struct Node *next;
+
+    Node(char x){
+        data = x;
+        next = NULL;
+    }
+
+};
+*/
+
+class Solution {
+  public:
+   
+    struct Node* arrangeCV(Node* head) {
+        Node* temp=head;
+        Node* temp1=NULL;
+        Node* tempV=NULL;
+        Node* temp2=NULL;
+        Node* tempC=NULL;
+        while(temp!=NULL){
+            if(temp->data=='a' || temp->data=='e' ||temp->data=='i' ||temp->data=='o' || temp->data=='u' ){
+                if(tempV==NULL){
+                    tempV=temp;
+                    temp1=tempV;
+                    // temp=temp->next;
+                    // temp1->next=NULL;
+                }
+                else{
+                    temp1->next=temp;
+                    temp1=temp;
+                    // temp=temp->next;
+                    // temp1->next=NULL;
+                }
+                temp=temp->next;
+                temp1->next=NULL;
+            }
+            else{
+                if(tempC==NULL){
+                    tempC=temp;
+                    temp2=tempC;
+                    // temp=temp->next;
+                    // temp2->next=NULL;
+                }
+                else{
+                    temp2->next=temp;
+                    temp2=temp;
+                    // temp=temp->next;
+                    // temp2->next=NULL;
+                }
+                temp=temp->next;
+                temp2->next=NULL;
+            }
+            
+        }
+        if(temp1==NULL){
+            return tempC;
+        }
+        else{
+            temp1->next=tempC;
+        }
+        
+        return tempV;
+    }
+};
