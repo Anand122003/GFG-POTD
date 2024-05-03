@@ -1,0 +1,34 @@
+class Solution
+{
+    public:
+   
+    vector<int> Kdistance(struct Node *root, int k)
+    {    
+         int i=0 ;
+         vector<int> ans;
+         queue<Node*> q;
+         q.push(root);
+       
+         while(!q.empty()){
+             
+             int n=q.size();
+             while(n!=0){
+                 
+                 Node* temp=q.front();
+                 if(temp->left!=NULL){
+                     q.push(temp->left);
+                 }
+                 if(temp->right!=NULL){
+                     q.push(temp->right);
+                 }
+                 if(i==k){
+                     ans.push_back(temp->data);
+                 }
+                 q.pop();
+                 n--;
+             }
+             i++;
+         }
+         return ans;
+    }
+};
